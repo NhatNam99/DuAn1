@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">DuAn1</string>
+    <string name="Welcome">Welcome to the City General Hospital</string>
+    <string name="TitleLogin">Patient Management</string>
+    <string name="btnLogin">Login</string>
+    <string name="Check">Remember Password?</string>
+    <string name="TitleLogout">Change Password</string>
+    <string name="btnSave">Save</string>
+</resources>

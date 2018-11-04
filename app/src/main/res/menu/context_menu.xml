@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/mmUpdate"
+        android:title="Update Patient Information"/>
+
+    <item android:id="@+id/mmSua"
+        android:title="Delete Patient Information"/>
+
+</menu>
