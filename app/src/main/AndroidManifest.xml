@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,8 +19,14 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".UpdatePatientActivity" />
         <activity android:name=".AddPatientActivity" />
-        <activity android:name=".PatientDetailsActivity" />
-        <activity android:name=".LogoutActivity"></activity>
+        <activity android:name=".PatientDetailsActivity"
+            android:theme="@style/AppTheme."
+            android:label="Patient Details"/>
+        <activity android:name=".ChangePasswordActivity" />
+        <activity
+            android:name=".PatientManagementActivity"
+            android:label="@string/title_activity_patient_management"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

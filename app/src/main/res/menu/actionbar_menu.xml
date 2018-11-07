@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/mmAdd"
+    <item android:id="@+id/itemAdd"
         android:title="Add Patient Information"/>
 
-    <item android:id="@+id/mmChange"
+    <item android:id="@+id/itemChange"
         android:title="Change Password"/>
 
-    <item android:id="@+id/mmSua"
+    <item android:id="@+id/itemLogout"
         android:title="Logout"/>
 
 </menu>

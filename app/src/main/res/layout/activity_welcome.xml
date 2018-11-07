@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".WelcomeActivity"
     android:background="#ffffff"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:onClick="Login">
 
     <ImageView
         android:layout_width="300dp"

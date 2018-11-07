@@ -6,4 +6,6 @@
     <string name="Check">Remember Password?</string>
     <string name="TitleLogout">Change Password</string>
     <string name="btnSave">Save</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_patient_management">Patient Management</string>
 </resources>
