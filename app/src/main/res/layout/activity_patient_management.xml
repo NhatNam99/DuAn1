@@ -22,4 +22,5 @@
 
     <include layout="@layout/content_patient_management" />
 
+
 </android.support.design.widget.CoordinatorLayout>

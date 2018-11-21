@@ -23,6 +23,7 @@
         android:textSize="26sp" />
 
     <EditText
+        android:id="@+id/edtUserName"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -30,6 +31,7 @@
         android:hint="User Name" />
 
     <EditText
+        android:id="@+id/edtPass"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

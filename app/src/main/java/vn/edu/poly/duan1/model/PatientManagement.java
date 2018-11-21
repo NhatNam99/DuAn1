@@ -8,7 +8,7 @@ public class PatientManagement {
     public String Name;
     public String Room;
     public int Code;
-    public RadioButton Gender;
+    public String Gender;
     public int Age;
     public String Blood;
     public String Doctor;
@@ -16,26 +16,26 @@ public class PatientManagement {
     public String Symptom;
     public String Diagnose;
     public String Treatment;
-    public Spinner HealthStatus;
+    public String HealthStatus;
 
     public PatientManagement() {
 
     }
 
-    public PatientManagement(String name, String room, int code, RadioButton gender, int age, String blood, String doctor, String nurse, String symptom, String diagnose, String treatment, Spinner healthStatus) {
-        Name = name;
-        Room = room;
-        Code = code;
-        Gender = gender;
-        Age = age;
-        Blood = blood;
-        Doctor = doctor;
-        Nurse = nurse;
-        Symptom = symptom;
-        Diagnose = diagnose;
-        Treatment = treatment;
-        HealthStatus = healthStatus;
-    }
+//    public PatientManagement(String name, String room, String code, String gender, String age, String blood, String doctor, String nurse, String symptom, String diagnose, String treatment, String healthStatus) {
+//        Name = name;
+//        Room = room;
+//        Code = code;
+//        Gender = gender;
+//        Age = age;
+//        Blood = blood;
+//        Doctor = doctor;
+//        Nurse = nurse;
+//        Symptom = symptom;
+//        Diagnose = diagnose;
+//        Treatment = treatment;
+//        HealthStatus = healthStatus;
+//    }
 
     public String getName() {
         return Name;
@@ -61,11 +61,11 @@ public class PatientManagement {
         Code = code;
     }
 
-    public RadioButton getGender() {
+    public String getGender() {
         return Gender;
     }
 
-    public void setGender(RadioButton gender) {
+    public void setGender(String gender) {
         Gender = gender;
     }
 
@@ -125,11 +125,11 @@ public class PatientManagement {
         Treatment = treatment;
     }
 
-    public Spinner getHealthStatus() {
+    public String getHealthStatus() {
         return HealthStatus;
     }
 
-    public void setHealthStatus(Spinner healthStatus) {
+    public void setHealthStatus(String healthStatus) {
         HealthStatus = healthStatus;
     }
 }

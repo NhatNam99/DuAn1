@@ -49,6 +49,7 @@
                 android:textStyle="bold" />
 
             <RadioGroup
+                android:id="@+id/rdGender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -127,6 +128,7 @@
                 android:layout_marginTop="10dp" />
 
             <Spinner
+                android:id="@+id/spStatus"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp">
@@ -142,12 +144,14 @@
             android:layout_marginTop="20dp">
 
             <Button
+                android:id="@+id/btnAdd"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="ADD" />
 
             <Button
+                android:id="@+id/btnCancel"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
