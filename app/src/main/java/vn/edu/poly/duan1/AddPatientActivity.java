@@ -48,54 +48,54 @@ public class AddPatientActivity extends AppCompatActivity{
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, arrayListStatus);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnHealthStatus.setAdapter(arrayAdapter);
-//        spnHealthStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-//                 vitriStatus = position;
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> adapterView) {
-//
-//            }
-//        });
+        spnHealthStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                 vitriStatus = position;
+            }
 
-//        btnAdd.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                rdgender = rdGender.getCheckedRadioButtonId();
-//                RadioButton rdCheck = findViewById(rdgender);
-//                String Gioitinh = rdCheck.getText().toString();
-//
-//                try {
-//                    PatientManagement patientManagement = new PatientManagement();
-//                    patientManagement.setName(edtName.getText().toString());
-//                    patientManagement.setRoom(edtRoom.getText().toString());
-//                    patientManagement.setCode(Integer.parseInt(edtCode.getText().toString()));
-//                    patientManagement.setBlood(edtBlood.getText().toString());
-//                    patientManagement.setAge(Integer.parseInt(edtAge.getText().toString()));
-//                    patientManagement.setDoctor(edtDoctor.getText().toString());
-//                    patientManagement.setNurse(edtNurse.getText().toString());
-//                    patientManagement.setDiagnose(edtRoom.getText().toString());
-//                    patientManagement.setSymptom(edtSymptom.getText().toString());
-//                    patientManagement.setTreatment(edtTreatment.getText().toString());
-//                    patientManagement.setGender(Gioitinh);
-//                    Toast.makeText(AddPatientActivity.this, "Add Success", Toast.LENGTH_SHORT).show();
-//                    Intent intent = new Intent(AddPatientActivity.this, PatientManagement.class);
-//                    startActivity(intent);
-//                } catch (Exception e){
-//                    Toast.makeText(AddPatientActivity.this, "Error" + e.getMessage().toString(), Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
-//
-//        btnCancel.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(AddPatientActivity.this, PatientManagement.class);
-//                startActivity(intent);
-//            }
-//        });
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rdgender = rdGender.getCheckedRadioButtonId();
+                RadioButton rdCheck = findViewById(rdgender);
+                String Gioitinh = rdCheck.getText().toString();
+
+                try {
+                    PatientManagement patientManagement = new PatientManagement();
+                    patientManagement.setName(edtName.getText().toString());
+                    patientManagement.setRoom(edtRoom.getText().toString());
+                    patientManagement.setCode(Integer.parseInt(edtCode.getText().toString()));
+                    patientManagement.setBlood(edtBlood.getText().toString());
+                    patientManagement.setAge(Integer.parseInt(edtAge.getText().toString()));
+                    patientManagement.setDoctor(edtDoctor.getText().toString());
+                    patientManagement.setNurse(edtNurse.getText().toString());
+                    patientManagement.setDiagnose(edtRoom.getText().toString());
+                    patientManagement.setSymptom(edtSymptom.getText().toString());
+                    patientManagement.setTreatment(edtTreatment.getText().toString());
+                    patientManagement.setGender(Gioitinh);
+                    Toast.makeText(AddPatientActivity.this, "Add Success", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(AddPatientActivity.this, PatientManagement.class);
+                    startActivity(intent);
+                } catch (Exception e){
+                    Toast.makeText(AddPatientActivity.this, "Error" + e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AddPatientActivity.this, PatientManagement.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void viewID() {
