@@ -22,21 +22,6 @@ public class PatientManagement {
 
     }
 
-//    public PatientManagement(String name, String room, String code, String gender, String age, String blood, String doctor, String nurse, String symptom, String diagnose, String treatment, String healthStatus) {
-//        Name = name;
-//        Room = room;
-//        Code = code;
-//        Gender = gender;
-//        Age = age;
-//        Blood = blood;
-//        Doctor = doctor;
-//        Nurse = nurse;
-//        Symptom = symptom;
-//        Diagnose = diagnose;
-//        Treatment = treatment;
-//        HealthStatus = healthStatus;
-//    }
-
     public String getName() {
         return Name;
     }

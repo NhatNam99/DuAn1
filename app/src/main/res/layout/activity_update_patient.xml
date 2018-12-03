@@ -14,21 +14,24 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:hint="Name" />
+        android:hint="Name"
+        android:inputType="text"/>
 
     <EditText
         android:id="@+id/edtRoom"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:hint="Room" />
+        android:hint="Room"
+        android:inputType="text"/>
 
     <EditText
         android:id="@+id/edtCode"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:hint="Code" />
+        android:hint="Code"
+        android:inputType="text"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -75,42 +78,48 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:hint="Age" />
+        android:hint="Age"
+        android:inputType="number"/>
 
     <EditText
         android:id="@+id/edtDoctor"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:hint="Doctor" />
+        android:hint="Doctor"
+        android:inputType="text"/>
 
     <EditText
         android:id="@+id/edtNurse"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:hint="Nurse" />
+        android:hint="Nurse"
+        android:inputType="text"/>
 
     <EditText
         android:id="@+id/edtSymptom"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:hint="Symptom" />
+        android:hint="Symptom"
+        android:inputType="text"/>
 
     <EditText
         android:id="@+id/edtDiagnose"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:hint="Diagnose" />
+        android:hint="Diagnose"
+        android:inputType="text"/>
 
     <EditText
         android:id="@+id/edtTreatment"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:hint="Treatment" />
+        android:hint="Treatment"
+        android:inputType="text"/>
 
     <LinearLayout
         android:layout_width="match_parent"

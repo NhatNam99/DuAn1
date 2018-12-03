@@ -19,14 +19,18 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".UpdatePatientActivity" />
         <activity android:name=".AddPatientActivity" />
-        <activity android:name=".PatientDetailsActivity"
-            android:theme="@style/AppTheme."
-            android:label="Patient Details"/>
+        <activity
+            android:name=".PatientDetailsActivity"
+            android:label="Patient Details"
+            android:theme="@style/AppTheme." />
         <activity android:name=".ChangePasswordActivity" />
         <activity
             android:name=".PatientManagementActivity"
             android:label="@string/title_activity_patient_management"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".RegisterInformationActivity">
+
+        </activity>
     </application>
 
 </manifest>

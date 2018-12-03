@@ -23,11 +23,13 @@ public class AddPatientActivity extends AppCompatActivity{
 
     EditText edtName, edtRoom, edtCode, edtBlood, edtAge, edtDoctor, edtNurse, edtSymptom, edtDiagnose, edtTreatment;
     Spinner spnHealthStatus;
+    String Status;
     Button btnAdd, btnCancel;
     RadioGroup rdGender;
     List<PatientManagement> list;
     PatientDAO patientDAO;
     int rdgender, vitriStatus;
+    private final List<String> arrayListStatus = new ArrayList<>();
 
 
     @Override
@@ -40,18 +42,19 @@ public class AddPatientActivity extends AppCompatActivity{
         spnHealthStatus = findViewById(R.id.spStatus);
         list = new ArrayList<PatientManagement>();
 
-        ArrayList<String> arrayListStatus = new ArrayList<String>();
+//        List<String> arrayListStatus = new ArrayList<>();
         arrayListStatus.add("Good");
         arrayListStatus.add("Normal");
         arrayListStatus.add("Bad");
 
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, arrayListStatus);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, arrayListStatus);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnHealthStatus.setAdapter(arrayAdapter);
         spnHealthStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-                 vitriStatus = position;
+                Status = adapterView.getItemAtPosition(position).toString();
+                vitriStatus = position;
             }
 
             @Override
@@ -65,7 +68,7 @@ public class AddPatientActivity extends AppCompatActivity{
             public void onClick(View view) {
                 rdgender = rdGender.getCheckedRadioButtonId();
                 RadioButton rdCheck = findViewById(rdgender);
-                String Gioitinh = rdCheck.getText().toString();
+                String Gender = rdCheck.getText().toString();
 
                 try {
                     PatientManagement patientManagement = new PatientManagement();
@@ -79,9 +82,11 @@ public class AddPatientActivity extends AppCompatActivity{
                     patientManagement.setDiagnose(edtRoom.getText().toString());
                     patientManagement.setSymptom(edtSymptom.getText().toString());
                     patientManagement.setTreatment(edtTreatment.getText().toString());
-                    patientManagement.setGender(Gioitinh);
+                    patientManagement.setGender(Gender);
+                    spnHealthStatus.setSelection(checkPositionStatus(Status));
+                    patientDAO.Insert(patientManagement);
                     Toast.makeText(AddPatientActivity.this, "Add Success", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(AddPatientActivity.this, PatientManagement.class);
+                    Intent intent = new Intent(AddPatientActivity.this, PatientManagementActivity.class);
                     startActivity(intent);
                 } catch (Exception e){
                     Toast.makeText(AddPatientActivity.this, "Error" + e.getMessage().toString(), Toast.LENGTH_SHORT).show();
@@ -92,7 +97,7 @@ public class AddPatientActivity extends AppCompatActivity{
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AddPatientActivity.this, PatientManagement.class);
+                Intent intent = new Intent(AddPatientActivity.this, PatientManagementActivity.class);
                 startActivity(intent);
             }
         });
@@ -110,6 +115,16 @@ public class AddPatientActivity extends AppCompatActivity{
         edtSymptom = findViewById(R.id.edtSymptom);
         edtDiagnose = findViewById(R.id.edtDiagnose);
         edtTreatment = findViewById(R.id.edtTreatment);
+        btnAdd = findViewById(R.id.btnAdd);
+        btnCancel = findViewById(R.id.btnCancel);
     }
 
+    private int checkPositionStatus(String health) {
+        for (int i = 0; i < arrayListStatus.size(); i++) {
+            if (health.equals(arrayListStatus.get(i))) {
+                return i;
+            }
+        }
+        return 0;
+    }
 }

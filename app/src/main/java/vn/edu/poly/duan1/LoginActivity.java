@@ -12,10 +12,10 @@ import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText edtUserName, edtPass;
+    EditText edtUserName, edtPass;
     String UserName, Password;
     SharedPreferences sharedPreferences;
-    private Button btnLogin;
+    Button btnLogin, btnRegistration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,23 +25,40 @@ public class LoginActivity extends AppCompatActivity {
         edtPass = findViewById(R.id.edtPass);
 
         sharedPreferences = getSharedPreferences("config", Context.MODE_PRIVATE);
-        UserName = sharedPreferences.getString("UserName", "NhatNam");
-        Password = sharedPreferences.getString("Password", "Nam123");
+        UserName = sharedPreferences.getString("UserName", "");
+        Password = sharedPreferences.getString("Password", "");
+
 
         btnLogin = findViewById(R.id.btnLogin);
+        btnRegistration = findViewById(R.id.btnRegister);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String User = edtUserName.getText().toString();
-                String Pass = edtPass.getText().toString();
-                if (User.equals(UserName) && Pass.equals(Password)){
+                String User = edtUserName.getText().toString().trim();
+                String Pass = edtPass.getText().toString().trim();
+
+                if (User.isEmpty() || Pass.isEmpty()) {
+                    if (User.isEmpty())
+                        edtUserName.setError(getString(R.string.notify_empty_user));
+                    if (Pass.isEmpty())
+                        edtPass.setError(getString(R.string.notify_empty_pass));
+                }
+                if (User.equals(UserName) && Pass.equals(Password)) {
                     Toast.makeText(LoginActivity.this, "Login Success", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(LoginActivity.this, PatientManagementActivity.class);
                     startActivity(intent);
                     finish();
-                }else {
+                } else {
                     Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        btnRegistration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, RegisterInformationActivity.class);
+                startActivity(intent);
             }
         });
     }

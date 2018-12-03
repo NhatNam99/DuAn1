@@ -8,4 +8,11 @@
     <string name="btnSave">Save</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_activity_patient_management">Patient Management</string>
+    <string name="notify_empty_user">Input Requirements</string>
+    <string name="notify_empty_pass">Input Requirements</string>
+    <string name="btnRegister">Registration</string>
+    <string name="btnCancel">Cancel</string>
+    <string name="btnRegistration">REGISTRATION</string>
+    <string name="TitleRegistration">Registration</string>
+    <string name="username_already_exists">Username Already Exists</string>
 </resources>

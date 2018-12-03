@@ -40,7 +40,7 @@ public interface Constant {
             "" + COLUMN_SYMPTOM + " VARCHAR," +
             "" + COLUMN_DIAGNOSE + " VARCHAR," +
             "" + COLUMN_TREATMENT + " VARCHAR," +
-            "" + COLUMN_HEALTH_STATUS + "VARVHAR" +
+            "" + COLUMN_HEALTH_STATUS + " VARCHAR" +
             ")";
 
 }
