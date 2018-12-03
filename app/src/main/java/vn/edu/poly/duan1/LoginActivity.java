@@ -37,20 +37,20 @@ public class LoginActivity extends AppCompatActivity {
                 String User = edtUserName.getText().toString().trim();
                 String Pass = edtPass.getText().toString().trim();
 
-//                if (User.isEmpty() || Pass.isEmpty()) {
-//                    if (User.isEmpty())
-//                        edtUserName.setError(getString(R.string.notify_empty_user));
-//                    if (Pass.isEmpty())
-//                        edtPass.setError(getString(R.string.notify_empty_pass));
-//                }
-
-                if (User.equals(UserName) && Pass.equals(Password)) {
-                    Toast.makeText(LoginActivity.this, "Login Success", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(LoginActivity.this, PatientManagementActivity.class);
-                    startActivity(intent);
-                    finish();
-                } else {
-                    Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                if (User.isEmpty() || Pass.isEmpty()) {
+                    if (User.isEmpty())
+                        edtUserName.setError(getString(R.string.notify_empty_user));
+                    if (Pass.isEmpty())
+                        edtPass.setError(getString(R.string.notify_empty_pass));
+                }else {
+                    if (User.equals(UserName) && Pass.equals(Password)) {
+                        Toast.makeText(LoginActivity.this, "Login Success", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(LoginActivity.this, PatientManagementActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
