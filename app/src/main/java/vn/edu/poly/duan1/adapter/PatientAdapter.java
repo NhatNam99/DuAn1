@@ -34,8 +34,8 @@ public class PatientAdapter extends ArrayAdapter<PatientManagement> {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.item_patient, parent, false);
 
-        TextView vCode = view.findViewById(R.id.tvCode);
-        TextView vName = view.findViewById(R.id.tvName);
+        TextView vCode = view.findViewById(R.id.tvcode);
+        TextView vName = view.findViewById(R.id.tvname);
 
         PatientManagement patientManagement = managementList.get(position);
         vCode.setText(patientManagement.getCode());

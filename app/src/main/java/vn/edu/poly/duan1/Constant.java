@@ -31,10 +31,10 @@ public interface Constant {
     String CREATE_TABLE_PATIENT = "CREATE TABLE " + TABLE_PATIENT + " (" +
             "" + COLUMN_NAME + " VARCHAR," +
             "" + COLUMN_ROOM + " INTEGER," +
-            "" + COLUMN_CODE + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "" + COLUMN_CODE + " VARCHAR PRIMARY KEY," +
             "" + COLUMN_GENDER + " VARCHAR," +
             "" + COLUMN_AGE + " INTEGER," +
-            "" + COLUMN_BLOOD + "VARCHAR," +
+            "" + COLUMN_BLOOD + " VARCHAR," +
             "" + COLUMN_DOCTOR + " VARCHAR," +
             "" + COLUMN_NURSE + " VARCHAR," +
             "" + COLUMN_SYMPTOM + " VARCHAR," +

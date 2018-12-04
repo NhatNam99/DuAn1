@@ -135,6 +135,7 @@
             android:layout_marginLeft="20dp"/>
 
         <Spinner
+            android:id="@+id/spStatus"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp">
@@ -151,12 +152,14 @@
         android:layout_marginTop="5dp">
 
         <Button
+            android:id="@+id/btnUpdate"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="UPDATE" />
 
         <Button
+            android:id="@+id/btnCancel"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

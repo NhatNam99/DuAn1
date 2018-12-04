@@ -11,6 +11,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.ContextMenu;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -27,6 +28,7 @@ import vn.edu.poly.duan1.sqlitedao.PatientDAO;
 
 public class PatientManagementActivity extends AppCompatActivity {
 
+    private LayoutInflater inflater;
     PatientDAO patientDAO;
     List<PatientManagement> list;
     PatientAdapter adapter;
@@ -43,7 +45,7 @@ public class PatientManagementActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         list = new ArrayList<PatientManagement>();
-        lsPatient = findViewById(R.id.lvPatient);
+        lsPatient = (ListView) findViewById(R.id.lvPatient);
         registerForContextMenu(lsPatient);
 
         patientDAO = new PatientDAO(this);
@@ -77,20 +79,34 @@ public class PatientManagementActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onContextItemSelected(MenuItem item) {
+    public boolean onContextItemSelected(final MenuItem item) {
         switch (item.getItemId()){
             case R.id.itemUpdate:
                 Intent intent = new Intent(PatientManagementActivity.this, UpdatePatientActivity.class);
-                int CodePatient = list.get(position).getCode();
+                String CodePatient = list.get(position).getCode();
                 intent.putExtra("CodePatient", CodePatient);
                 startActivityForResult(intent, Request_code_Edit);
                 break;
             case R.id.itemDelete:
-                AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-                PatientManagement patientManagement = list.get(menuInfo.position);
-                patientDAO.deletePatient(patientManagement);
-                adapter.remove(patientManagement);
-                adapter.notifyDataSetChanged();
+                final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("Do you want delete information patient?");
+                builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+                        PatientManagement patientManagement = list.get(menuInfo.position);
+                        patientDAO.deletePatient(patientManagement);
+                        adapter.remove(patientManagement);
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+                builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                builder.show();
         }
         return super.onContextItemSelected(item);
     }
@@ -130,6 +146,14 @@ public class PatientManagementActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == Request_code_Edit && resultCode == RESULT_OK){
+            loadListView();
+        }
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.actionbar_menu,menu);
         return true;
@@ -138,7 +162,7 @@ public class PatientManagementActivity extends AppCompatActivity {
     public void loadListView(){
         list = new ArrayList<PatientManagement>();
         list = patientDAO.getAllPatient();
-        adapter = new PatientAdapter(this, R.layout.item_patient, list);
+        adapter = new PatientAdapter(this, R.layout.content_patient_management, list);
         ListView listView = findViewById(R.id.lvPatient);
         listView.setAdapter(adapter);
     }

@@ -7,7 +7,7 @@ public class PatientManagement {
 
     public String Name;
     public String Room;
-    public int Code;
+    public String Code;
     public String Gender;
     public int Age;
     public String Blood;
@@ -38,11 +38,11 @@ public class PatientManagement {
         Room = room;
     }
 
-    public int getCode() {
+    public String getCode() {
         return Code;
     }
 
-    public void setCode(int code) {
+    public void setCode(String code) {
         Code = code;
     }
 

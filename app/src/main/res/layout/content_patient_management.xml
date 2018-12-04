@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".PatientManagementActivity"
-    tools:showIn="@layout/activity_patient_management">
+    tools:showIn="@layout/activity_patient_management"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Patient List"
+        android:paddingTop="5dp"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:paddingBottom="5dp"
+        android:background="#406643"/>
 
     <ListView
         android:id="@+id/lvPatient"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></ListView>
+        android:layout_height="wrap_content">
+    </ListView>
 
-</android.support.constraint.ConstraintLayout>
+
+</LinearLayout>
