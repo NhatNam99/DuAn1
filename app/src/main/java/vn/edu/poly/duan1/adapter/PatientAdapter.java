@@ -38,7 +38,7 @@ public class PatientAdapter extends ArrayAdapter<PatientManagement> {
         TextView vName = view.findViewById(R.id.tvname);
 
         PatientManagement patientManagement = managementList.get(position);
-        vCode.setText(patientManagement.getCode());
+        vCode.setText(String.valueOf(patientManagement.getCode()));
         vName.setText(patientManagement.getName());
 
         return view;

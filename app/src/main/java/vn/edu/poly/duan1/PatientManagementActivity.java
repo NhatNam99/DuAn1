@@ -83,7 +83,7 @@ public class PatientManagementActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.itemUpdate:
                 Intent intent = new Intent(PatientManagementActivity.this, UpdatePatientActivity.class);
-                String CodePatient = list.get(position).getCode();
+                int CodePatient = list.get(position).getCode();
                 intent.putExtra("CodePatient", CodePatient);
                 startActivityForResult(intent, Request_code_Edit);
                 break;

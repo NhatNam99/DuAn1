@@ -42,7 +42,7 @@ public class AddPatientActivity extends AppCompatActivity{
         spnHealthStatus = findViewById(R.id.spStatus);
         list = new ArrayList<PatientManagement>();
 
-//        List<String> arrayListStatus = new ArrayList<>();
+        List<String> arrayListStatus = new ArrayList<>();
         arrayListStatus.add("Good");
         arrayListStatus.add("Normal");
         arrayListStatus.add("Bad");
@@ -74,7 +74,7 @@ public class AddPatientActivity extends AppCompatActivity{
                     PatientManagement patientManagement = new PatientManagement();
                     patientManagement.setName(edtName.getText().toString());
                     patientManagement.setRoom(edtRoom.getText().toString());
-                    patientManagement.setCode(edtCode.getText().toString());
+                    patientManagement.setCode(Integer.parseInt(edtCode.getText().toString()));
                     patientManagement.setBlood(edtBlood.getText().toString());
                     patientManagement.setAge(Integer.parseInt(edtAge.getText().toString()));
                     patientManagement.setDoctor(edtDoctor.getText().toString());

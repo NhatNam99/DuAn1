@@ -64,7 +64,7 @@ public class PatientDAO implements Constant {
 
             patientManagement.setName(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)));
             patientManagement.setRoom(cursor.getString(cursor.getColumnIndex(COLUMN_ROOM)));
-            patientManagement.setCode(cursor.getString(cursor.getColumnIndex(COLUMN_CODE)));
+            patientManagement.setCode(Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_CODE))));
             patientManagement.setAge(Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_AGE))));
             patientManagement.setBlood(cursor.getString(cursor.getColumnIndex(COLUMN_BLOOD)));
             patientManagement.setSymptom(cursor.getString(cursor.getColumnIndex(COLUMN_SYMPTOM)));
@@ -80,17 +80,17 @@ public class PatientDAO implements Constant {
         return listPatient;
     }
 
-    public boolean deletePatient(PatientManagement patientManagement){
+    public boolean deletePatient(PatientManagement patientManagement) {
         SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
-        int check = sqLiteDatabase.delete(TABLE_PATIENT, COLUMN_CODE + " = ?" + patientManagement.getCode(), null);
-        if (check != 0){
+        int check = sqLiteDatabase.delete(TABLE_PATIENT, COLUMN_CODE + " = " + patientManagement.getCode(), null);
+        if (check != 0) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
 
-    public long updatePatient(PatientManagement patientManagement){
+    public long updatePatient(PatientManagement patientManagement) {
         SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COLUMN_NAME, patientManagement.getName());
@@ -99,27 +99,29 @@ public class PatientDAO implements Constant {
         contentValues.put(COLUMN_GENDER, patientManagement.getGender());
         contentValues.put(COLUMN_AGE, patientManagement.getAge());
         contentValues.put(COLUMN_DOCTOR, patientManagement.getDoctor());
-        contentValues.put(COLUMN_NURSE, patientManagement.getName());
+        contentValues.put(COLUMN_NURSE, patientManagement.getNurse());
         contentValues.put(COLUMN_SYMPTOM, patientManagement.getSymptom());
         contentValues.put(COLUMN_DIAGNOSE, patientManagement.getDiagnose());
         contentValues.put(COLUMN_TREATMENT, patientManagement.getTreatment());
 
-        return sqLiteDatabase.update(TABLE_PATIENT, contentValues, TABLE_PATIENT + "=?", new String[]{String.valueOf(patientManagement.getCode())});
+        return sqLiteDatabase.update(TABLE_PATIENT, contentValues, COLUMN_CODE + "=?", new String[]{String.valueOf(patientManagement.getCode())});
     }
 
-    public PatientManagement CodePatient(String code){
+    public PatientManagement CodePatient(String code) {
         SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
-        String table = "SELECT * FROM " + databaseHelper.TABLE_PATIENT + " WHERE "
-                + databaseHelper.TABLE_PATIENT + " AND " + databaseHelper.COLUMN_CODE + " = " + code;
-        Cursor cursor = sqLiteDatabase.rawQuery(table, null);
+        Cursor cursor = sqLiteDatabase.query
+                (TABLE_PATIENT, new String[]{COLUMN_NAME, COLUMN_CODE, COLUMN_ROOM, COLUMN_GENDER, COLUMN_AGE, COLUMN_BLOOD, COLUMN_DOCTOR, COLUMN_NURSE, COLUMN_DIAGNOSE, COLUMN_SYMPTOM, COLUMN_TREATMENT, COLUMN_HEALTH_STATUS},
+                        COLUMN_CODE + "=?", new String[]{code},
+                        null, null, null);
         cursor.moveToFirst();
         PatientManagement patientManagement = new PatientManagement();
 
-        while (!cursor.isAfterLast()){
+        while (!cursor.isAfterLast()) {
             patientManagement.setName(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)));
             patientManagement.setRoom(cursor.getString(cursor.getColumnIndex(COLUMN_ROOM)));
-            patientManagement.setCode(cursor.getString(cursor.getColumnIndex(COLUMN_CODE)));
+            patientManagement.setCode(Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_CODE))));
             patientManagement.setAge(Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_AGE))));
+            patientManagement.setGender(cursor.getString(cursor.getColumnIndex(COLUMN_GENDER)));
             patientManagement.setBlood(cursor.getString(cursor.getColumnIndex(COLUMN_BLOOD)));
             patientManagement.setSymptom(cursor.getString(cursor.getColumnIndex(COLUMN_SYMPTOM)));
             patientManagement.setDiagnose(cursor.getString(cursor.getColumnIndex(COLUMN_DIAGNOSE)));
@@ -127,6 +129,7 @@ public class PatientDAO implements Constant {
             patientManagement.setNurse(cursor.getString(cursor.getColumnIndex(COLUMN_NURSE)));
             patientManagement.setTreatment(cursor.getString(cursor.getColumnIndex(COLUMN_TREATMENT)));
             patientManagement.setHealthStatus(cursor.getString(cursor.getColumnIndex(COLUMN_HEALTH_STATUS)));
+            cursor.moveToNext();
         }
         return patientManagement;
     }

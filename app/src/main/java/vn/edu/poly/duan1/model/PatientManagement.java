@@ -5,18 +5,18 @@ import android.widget.Spinner;
 
 public class PatientManagement {
 
-    public String Name;
-    public String Room;
-    public String Code;
-    public String Gender;
-    public int Age;
-    public String Blood;
-    public String Doctor;
-    public String Nurse;
-    public String Symptom;
-    public String Diagnose;
-    public String Treatment;
-    public String HealthStatus;
+    private String Name;
+    private String Room;
+    private int Code;
+    private String Gender;
+    private int Age;
+    private String Blood;
+    private String Doctor;
+    private String Nurse;
+    private String Symptom;
+    private String Diagnose;
+    private String Treatment;
+    private String HealthStatus;
 
     public PatientManagement() {
 
@@ -38,11 +38,11 @@ public class PatientManagement {
         Room = room;
     }
 
-    public String getCode() {
+    public int getCode() {
         return Code;
     }
 
-    public void setCode(String code) {
+    public void setCode(int code) {
         Code = code;
     }
 
