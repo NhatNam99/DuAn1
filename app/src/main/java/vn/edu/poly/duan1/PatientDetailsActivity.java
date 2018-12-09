@@ -2,7 +2,6 @@ package vn.edu.poly.duan1;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import vn.edu.poly.duan1.model.PatientManagement;
@@ -24,7 +23,7 @@ public class PatientDetailsActivity extends AppCompatActivity {
         TVAGE = findViewById(R.id.Tvage);
         TVBLOOD = findViewById(R.id.Tvblood);
         TVDOCTOR = findViewById(R.id.Tvdoctor);
-        TVNURSE = findViewById(R.id.Tvsymptom);
+        TVNURSE = findViewById(R.id.Tvnurse);
         TVSYMPTOM = findViewById(R.id.Tvsymptom);
         TVDIAGNOSE =findViewById(R.id.Tvdiagnose);
         TVTREATMENT =findViewById(R.id.Tvtreatment);
@@ -33,7 +32,7 @@ public class PatientDetailsActivity extends AppCompatActivity {
         patientDAO = new PatientDAO(this);
         int code = getIntent().getExtras().getInt("CodePatient");
         PatientManagement patientManagement = new PatientManagement();
-        patientManagement = patientDAO.CodePatient(String.valueOf(code));
+        patientManagement = patientDAO.CodePatient(code);
 
         TVNAME.setText(patientManagement.getName().toString());
         TVCODE .setText(String.valueOf(patientManagement.getCode()));
@@ -45,7 +44,7 @@ public class PatientDetailsActivity extends AppCompatActivity {
         TVNURSE.setText(patientManagement.getNurse().toString());
         TVSYMPTOM.setText(patientManagement.getSymptom().toString());
         TVDIAGNOSE.setText(patientManagement.getDiagnose().toString());
-        TVTREATMENT.setText(patientManagement.getDiagnose().toString());
+        TVTREATMENT.setText(patientManagement.getTreatment().toString());
         TVSTATUS.setText(String.valueOf(patientManagement.getHealthStatus()));
     }
 }

@@ -28,8 +28,7 @@ public class AddPatientActivity extends AppCompatActivity{
     RadioGroup rdGender;
     List<PatientManagement> list;
     PatientDAO patientDAO;
-    int rdgender, vitriStatus;
-    private final List<String> arrayListStatus = new ArrayList<>();
+    int rdgender;
 
 
     @Override
@@ -54,7 +53,6 @@ public class AddPatientActivity extends AppCompatActivity{
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 Status = adapterView.getItemAtPosition(position).toString();
-                vitriStatus = position;
             }
 
             @Override
@@ -79,11 +77,11 @@ public class AddPatientActivity extends AppCompatActivity{
                     patientManagement.setAge(Integer.parseInt(edtAge.getText().toString()));
                     patientManagement.setDoctor(edtDoctor.getText().toString());
                     patientManagement.setNurse(edtNurse.getText().toString());
-                    patientManagement.setDiagnose(edtRoom.getText().toString());
+                    patientManagement.setDiagnose(edtDiagnose.getText().toString());
                     patientManagement.setSymptom(edtSymptom.getText().toString());
                     patientManagement.setTreatment(edtTreatment.getText().toString());
                     patientManagement.setGender(Gender);
-                    spnHealthStatus.setSelection(checkPositionStatus(Status));
+                    patientManagement.setHealthStatus(Status);
                     patientDAO.Insert(patientManagement);
                     Toast.makeText(AddPatientActivity.this, "Add Success", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(AddPatientActivity.this, PatientManagementActivity.class);
@@ -119,12 +117,12 @@ public class AddPatientActivity extends AppCompatActivity{
         btnCancel = findViewById(R.id.btnCancel);
     }
 
-    private int checkPositionStatus(String health) {
-        for (int i = 0; i < arrayListStatus.size(); i++) {
-            if (health.equals(arrayListStatus.get(i))) {
-                return i;
-            }
-        }
-        return 0;
-    }
+//    private int checkPositionStatus(String health) {
+//        for (int i = 0; i < arrayListStatus.size(); i++) {
+//            if (health.equals(arrayListStatus.get(i))) {
+//                return i;
+//            }
+//        }
+//        return 0;
+//    }
 }

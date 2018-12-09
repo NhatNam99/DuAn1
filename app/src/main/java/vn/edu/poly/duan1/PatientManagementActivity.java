@@ -9,7 +9,9 @@ import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -26,7 +28,7 @@ import vn.edu.poly.duan1.adapter.PatientAdapter;
 import vn.edu.poly.duan1.model.PatientManagement;
 import vn.edu.poly.duan1.sqlitedao.PatientDAO;
 
-public class PatientManagementActivity extends AppCompatActivity {
+public class PatientManagementActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
     private LayoutInflater inflater;
     PatientDAO patientDAO;
@@ -156,6 +158,9 @@ public class PatientManagementActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.actionbar_menu,menu);
+        MenuItem item = menu.findItem(R.id.search);
+        SearchView searchView = (SearchView) item.getActionView();
+        searchView.setOnQueryTextListener(this);
         return true;
     }
 
@@ -167,4 +172,22 @@ public class PatientManagementActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
     }
 
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        list = patientDAO.searchPatient(newText);
+        adapter.notifyDataSetChanged();
+        setAdapterListView(list);
+        return true;
+    }
+
+    private void setAdapterListView(List<PatientManagement> patientManagements){
+        adapter = new PatientAdapter(this, R.layout.content_patient_management, list);
+        ListView listView = findViewById(R.id.lvPatient);
+        listView.setAdapter(adapter);
+    }
 }
